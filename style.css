@@ -1,0 +1,137 @@
+:root {
+    --light: rgb(231, 220, 220);
+    --dark: rgb(19, 18, 18);
+    --blue: rgb(16, 82, 223);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: var(--blue);
+    min-height: 9vh;
+
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+header h1 {
+    
+    letter-spacing: 2px;
+    z-index: 200;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--light);
+}
+
+header h1:hover {
+    border-bottom: solid 3px var(--light);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 600;
+
+    padding: 1vh 1vw;
+    border-radius: 15px
+}
+
+.navbar a:hover {
+    /*transition: transform 5s ease-in; */
+    color: var(--blue);
+    background-color: var(--light);
+}
+
+/* When a link is active, a tiny line appears at the bottom of the active link. But when there is a hover, the color and background color switch places. */
+
+.menu {
+    display: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.menu div {
+    background-color: var(--light);
+    width: 25px;
+    height: 3px;
+    margin: 1vh 0;
+    transition: all 0.5s ease;
+}
+
+
+@media screen and (min-width: 1028px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: absolute;
+        top: 9vh;
+        padding: 2vh 3vw;
+        
+        width: 100%;
+        background-color: var(--blue);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        transform: translateY(-150%);
+        transition: transform 0.5s ease-in;
+        z-index: 2;
+    }
+
+    .navbar a {
+        margin: 1vh 0;
+        opacity: 0; /* When the nav menu appears, it takes sometime before the links start appearing */
+        border-radius: 5px
+    }
+    
+    .menu {
+        display: block;
+    }
+
+    .nav-active {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadingNavLink {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
